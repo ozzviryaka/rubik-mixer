@@ -65,9 +65,9 @@ const oppositeFaces = {
     'r': 'l', 'l': 'r',
     'u': 'd', 'd': 'u',
     'f': 'b', 'b': 'f',
-    'Rw': 'Lw', 'Lw': 'Rw',
-    'Uw': 'Dw', 'Dw': 'Uw',
-    'Fw': 'Bw', 'Bw': 'Fw',
+    'Rr': 'Ll', 'Ll': 'Rr',
+    'Uu': 'Dd', 'Dd': 'Uu',
+    'Ff': 'Bb', 'Bb': 'Ff',
     'M': 'M', 'E': 'E', 'S': 'S'
 };
 
