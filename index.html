@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор змішування кубика Рубика</title>
+    <title>Rubik's Cube Scramble Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🎲 Генератор змішування кубика Рубика</h1>
-            <p class="subtitle">Створіть випадкову послідовність рухів для вашого кубика</p>
+            <h1>🎲 Rubik's Cube Scramble Generator</h1>
+            <p class="subtitle">Create a random move sequence for your cube</p>
         </header>
 
         <div class="controls">
             <div class="control-group">
                 <label for="cubeSize">
                     <span class="label-icon">📦</span>
-                    Розмір кубика
+                    Cube Size
                 </label>
                 <select id="cubeSize">
                     <option value="2">2×2×2</option>
@@ -30,40 +30,40 @@
             <div class="control-group">
                 <label for="moveCount">
                     <span class="label-icon">🔄</span>
-                    Кількість рухів
+                    Number of Moves
                 </label>
                 <select id="moveCount">
-                    <option value="10">10 рухів</option>
-                    <option value="20" selected>20 рухів</option>
-                    <option value="30">30 рухів</option>
-                    <option value="40">40 рухів</option>
+                    <option value="10">10 moves</option>
+                    <option value="20" selected>20 moves</option>
+                    <option value="30">30 moves</option>
+                    <option value="40">40 moves</option>
                 </select>
             </div>
 
             <button id="generateBtn" class="generate-btn">
                 <span class="btn-icon">✨</span>
-                Згенерувати алгоритм
+                Generate Scramble
             </button>
         </div>
 
         <div class="result-container">
             <div class="result-header">
-                <h2>Алгоритм змішування</h2>
-                <button id="copyBtn" class="copy-btn" title="Копіювати">
+                <h2>Scramble Algorithm</h2>
+                <button id="copyBtn" class="copy-btn" title="Copy">
                     <span class="copy-icon">📋</span>
                 </button>
             </div>
             <div id="algorithm" class="algorithm">
                 <div class="placeholder">
-                    Натисніть кнопку, щоб згенерувати алгоритм
+                    Click the button to generate a scramble
                 </div>
             </div>
         </div>
 
         <div class="info-section">
-            <h3>📖 Позначення рухів</h3>
+            <h3>📖 Move Notation</h3>
             <div class="notation-grid">
-                <!-- Позначення будуть динамічно оновлюватись через JavaScript -->
+                <!-- Notation will be dynamically updated via JavaScript -->
             </div>
         </div>
     </div>

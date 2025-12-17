@@ -1,4 +1,4 @@
-// Базові рухи для різних розмірів кубиків
+// Base moves for different cube sizes
 const moveSets = {
     2: ['R', 'L', 'U', 'D', 'F', 'B'],
     3: ['R', 'L', 'U', 'D', 'F', 'B', 'M', 'E', 'S'],
@@ -6,75 +6,75 @@ const moveSets = {
     5: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Lw', 'Uw', 'Dw', 'Fw', 'Bw']
 };
 
-// Опис рухів для різних розмірів кубиків
+// Move descriptions for different cube sizes
 const moveDescriptions = {
     2: [
-        { move: 'R', desc: 'Права грань за годинниковою стрілкою' },
-        { move: 'L', desc: 'Ліва грань за годинниковою стрілкою' },
-        { move: 'U', desc: 'Верхня грань за годинниковою стрілкою' },
-        { move: 'D', desc: 'Нижня грань за годинниковою стрілкою' },
-        { move: 'F', desc: 'Передня грань за годинниковою стрілкою' },
-        { move: 'B', desc: 'Задня грань за годинниковою стрілкою' },
-        { move: '\'', desc: 'Проти годинникової стрілки (наприклад, R\')' },
-        { move: '2', desc: 'Подвійний поворот (наприклад, R2)' }
+        { move: 'R', desc: 'Right face clockwise' },
+        { move: 'L', desc: 'Left face clockwise' },
+        { move: 'U', desc: 'Up face clockwise' },
+        { move: 'D', desc: 'Down face clockwise' },
+        { move: 'F', desc: 'Front face clockwise' },
+        { move: 'B', desc: 'Back face clockwise' },
+        { move: '\'', desc: 'Counter-clockwise (e.g., R\')' },
+        { move: '2', desc: 'Double turn (e.g., R2)' }
     ],
     3: [
-        { move: 'R', desc: 'Права грань за годинниковою стрілкою' },
-        { move: 'L', desc: 'Ліва грань за годинниковою стрілкою' },
-        { move: 'U', desc: 'Верхня грань за годинниковою стрілкою' },
-        { move: 'D', desc: 'Нижня грань за годинниковою стрілкою' },
-        { move: 'F', desc: 'Передня грань за годинниковою стрілкою' },
-        { move: 'B', desc: 'Задня грань за годинниковою стрілкою' },
-        { move: 'M', desc: 'Середній шар (між R і L)' },
-        { move: 'E', desc: 'Екваторіальний шар (між U і D)' },
-        { move: 'S', desc: 'Стоячий шар (між F і B)' },
-        { move: '\'', desc: 'Проти годинникової стрілки (наприклад, R\')' },
-        { move: '2', desc: 'Подвійний поворот (наприклад, R2)' }
+        { move: 'R', desc: 'Right face clockwise' },
+        { move: 'L', desc: 'Left face clockwise' },
+        { move: 'U', desc: 'Up face clockwise' },
+        { move: 'D', desc: 'Down face clockwise' },
+        { move: 'F', desc: 'Front face clockwise' },
+        { move: 'B', desc: 'Back face clockwise' },
+        { move: 'M', desc: 'Middle layer (between R and L)' },
+        { move: 'E', desc: 'Equatorial layer (between U and D)' },
+        { move: 'S', desc: 'Standing layer (between F and B)' },
+        { move: '\'', desc: 'Counter-clockwise (e.g., R\')' },
+        { move: '2', desc: 'Double turn (e.g., R2)' }
     ],
     4: [
-        { move: 'R', desc: 'Права зовнішня грань' },
-        { move: 'L', desc: 'Ліва зовнішня грань' },
-        { move: 'U', desc: 'Верхня зовнішня грань' },
-        { move: 'D', desc: 'Нижня зовнішня грань' },
-        { move: 'F', desc: 'Передня зовнішня грань' },
-        { move: 'B', desc: 'Задня зовнішня грань' },
-        { move: 'r', desc: 'Права грань + внутрішній шар' },
-        { move: 'l', desc: 'Ліва грань + внутрішній шар' },
-        { move: 'u', desc: 'Верхня грань + внутрішній шар' },
-        { move: 'd', desc: 'Нижня грань + внутрішній шар' },
-        { move: 'f', desc: 'Передня грань + внутрішній шар' },
-        { move: 'b', desc: 'Задня грань + внутрішній шар' },
-        { move: '\'', desc: 'Проти годинникової стрілки' },
-        { move: '2', desc: 'Подвійний поворот' }
+        { move: 'R', desc: 'Right outer face' },
+        { move: 'L', desc: 'Left outer face' },
+        { move: 'U', desc: 'Up outer face' },
+        { move: 'D', desc: 'Down outer face' },
+        { move: 'F', desc: 'Front outer face' },
+        { move: 'B', desc: 'Back outer face' },
+        { move: 'r', desc: 'Right face + inner layer' },
+        { move: 'l', desc: 'Left face + inner layer' },
+        { move: 'u', desc: 'Up face + inner layer' },
+        { move: 'd', desc: 'Down face + inner layer' },
+        { move: 'f', desc: 'Front face + inner layer' },
+        { move: 'b', desc: 'Back face + inner layer' },
+        { move: '\'', desc: 'Counter-clockwise' },
+        { move: '2', desc: 'Double turn' }
     ],
     5: [
-        { move: 'R', desc: 'Права зовнішня грань' },
-        { move: 'L', desc: 'Ліва зовнішня грань' },
-        { move: 'U', desc: 'Верхня зовнішня грань' },
-        { move: 'D', desc: 'Нижня зовнішня грань' },
-        { move: 'F', desc: 'Передня зовнішня грань' },
-        { move: 'B', desc: 'Задня зовнішня грань' },
-        { move: 'r', desc: 'Права грань + 1 внутрішній шар' },
-        { move: 'l', desc: 'Ліва грань + 1 внутрішній шар' },
-        { move: 'u', desc: 'Верхня грань + 1 внутрішній шар' },
-        { move: 'd', desc: 'Нижня грань + 1 внутрішній шар' },
-        { move: 'f', desc: 'Передня грань + 1 внутрішній шар' },
-        { move: 'b', desc: 'Задня грань + 1 внутрішній шар' },
-        { move: 'Rw', desc: 'Права грань + 2 внутрішні шари' },
-        { move: 'Lw', desc: 'Ліва грань + 2 внутрішні шари' },
-        { move: 'Uw', desc: 'Верхня грань + 2 внутрішні шари' },
-        { move: 'Dw', desc: 'Нижня грань + 2 внутрішні шари' },
-        { move: 'Fw', desc: 'Передня грань + 2 внутрішні шари' },
-        { move: 'Bw', desc: 'Задня грань + 2 внутрішні шари' },
-        { move: '\'', desc: 'Проти годинникової стрілки' },
-        { move: '2', desc: 'Подвійний поворот' }
+        { move: 'R', desc: 'Right outer face' },
+        { move: 'L', desc: 'Left outer face' },
+        { move: 'U', desc: 'Up outer face' },
+        { move: 'D', desc: 'Down outer face' },
+        { move: 'F', desc: 'Front outer face' },
+        { move: 'B', desc: 'Back outer face' },
+        { move: 'r', desc: 'Right face + 1 inner layer' },
+        { move: 'l', desc: 'Left face + 1 inner layer' },
+        { move: 'u', desc: 'Up face + 1 inner layer' },
+        { move: 'd', desc: 'Down face + 1 inner layer' },
+        { move: 'f', desc: 'Front face + 1 inner layer' },
+        { move: 'b', desc: 'Back face + 1 inner layer' },
+        { move: 'Rw', desc: 'Right face + 2 inner layers' },
+        { move: 'Lw', desc: 'Left face + 2 inner layers' },
+        { move: 'Uw', desc: 'Up face + 2 inner layers' },
+        { move: 'Dw', desc: 'Down face + 2 inner layers' },
+        { move: 'Fw', desc: 'Front face + 2 inner layers' },
+        { move: 'Bw', desc: 'Back face + 2 inner layers' },
+        { move: '\'', desc: 'Counter-clockwise' },
+        { move: '2', desc: 'Double turn' }
     ]
 };
 
-// Модифікатори
+// Modifiers
 const modifiers = ['', '\'', '2'];
 
-// Групи протилежних граней
+// Opposite face pairs
 const oppositeFaces = {
     'R': 'L', 'L': 'R',
     'U': 'D', 'D': 'U',
@@ -88,26 +88,26 @@ const oppositeFaces = {
     'M': 'M', 'E': 'E', 'S': 'S'
 };
 
-// Отримати базову грань без модифікатора
+// Get base face without modifier
 function getBaseFace(move) {
     return move.replace(/['2]/g, '');
 }
 
-// Перевірка, чи є рухи схожими (та сама грань або протилежні)
+// Check if moves are similar (same face or opposite)
 function areSimilarMoves(move1, move2) {
     const base1 = getBaseFace(move1);
     const base2 = getBaseFace(move2);
     
-    // Та сама грань
+    // Same face
     if (base1 === base2) return true;
     
-    // Протилежні грані
+    // Opposite faces
     if (oppositeFaces[base1] === base2) return true;
     
     return false;
 }
 
-// Перевірка валідності нового руху
+// Validate new move
 function isValidMove(moves, newMove) {
     if (moves.length === 0) return true;
     
@@ -115,20 +115,20 @@ function isValidMove(moves, newMove) {
     const lastMove = moves[moves.length - 1];
     const lastBaseFace = getBaseFace(lastMove);
     
-    // Не можна повторювати ту саму грань підряд
+    // Cannot repeat the same face consecutively
     if (baseFace === lastBaseFace) return false;
     
-    // Перевірка останніх 3 рухів (щоб в групі з 4 не було повторів)
+    // Check last 3 moves (to avoid duplicates in group of 4)
     if (moves.length >= 3) {
         const lastThree = moves.slice(-3);
         const lastThreeFaces = lastThree.map(m => getBaseFace(m));
         
-        // Якщо нова грань вже зустрічається в останніх 3 рухах
+        // If new face already appears in last 3 moves
         if (lastThreeFaces.includes(baseFace)) {
             return false;
         }
         
-        // Перевірка на протилежні грані в останніх 3 рухах
+        // Check for opposite faces in last 3 moves
         for (const face of lastThreeFaces) {
             if (oppositeFaces[face] === baseFace) {
                 return false;
@@ -139,19 +139,19 @@ function isValidMove(moves, newMove) {
     return true;
 }
 
-// Генерація випадкового руху
+// Generate random move
 function generateRandomMove(availableMoves) {
     const baseFace = availableMoves[Math.floor(Math.random() * availableMoves.length)];
     const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
     return baseFace + modifier;
 }
 
-// Генерація алгоритму змішування
+// Generate scramble algorithm
 function generateScramble(cubeSize, moveCount) {
     const availableMoves = moveSets[cubeSize];
     const scramble = [];
     let attempts = 0;
-    const maxAttemptsPerMove = 50; // Максимум спроб для одного руху
+    const maxAttemptsPerMove = 50; // Maximum attempts per move
     
     while (scramble.length < moveCount) {
         let moveAdded = false;
@@ -167,9 +167,9 @@ function generateScramble(cubeSize, moveCount) {
             }
         }
         
-        // Якщо не змогли додати рух після багатьох спроб, додаємо будь-який валідний
+        // If couldn't add move after many attempts, add any valid one
         if (!moveAdded) {
-            // Знаходимо всі доступні грані, які не конфліктують
+            // Find all available faces that don't conflict
             const usedFaces = scramble.length >= 3 
                 ? scramble.slice(-3).map(m => getBaseFace(m))
                 : scramble.map(m => getBaseFace(m));
@@ -186,7 +186,7 @@ function generateScramble(cubeSize, moveCount) {
                 const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
                 scramble.push(face + modifier);
             } else {
-                // В крайньому випадку просто додаємо випадковий рух
+                // As last resort, just add a random move
                 scramble.push(generateRandomMove(availableMoves));
             }
         }
@@ -195,7 +195,7 @@ function generateScramble(cubeSize, moveCount) {
     return scramble;
 }
 
-// Відображення алгоритму
+// Display scramble algorithm
 function displayScramble(scramble) {
     const algorithmDiv = document.getElementById('algorithm');
     algorithmDiv.innerHTML = '';
@@ -210,7 +210,7 @@ function displayScramble(scramble) {
     });
 }
 
-// Копіювання алгоритму
+// Copy algorithm to clipboard
 function copyToClipboard() {
     const algorithmDiv = document.getElementById('algorithm');
     const moves = Array.from(algorithmDiv.querySelectorAll('.move'))
@@ -232,7 +232,7 @@ function copyToClipboard() {
     }
 }
 
-// Оновлення позначень рухів
+// Update move notation
 function updateNotation(cubeSize) {
     const notationGrid = document.querySelector('.notation-grid');
     const descriptions = moveDescriptions[cubeSize];
@@ -247,7 +247,7 @@ function updateNotation(cubeSize) {
     });
 }
 
-// Обробники подій
+// Event handlers
 document.getElementById('generateBtn').addEventListener('click', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
     const moveCount = parseInt(document.getElementById('moveCount').value);
@@ -258,13 +258,13 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 
 document.getElementById('copyBtn').addEventListener('click', copyToClipboard);
 
-// Оновлення позначень при зміні розміру кубика
+// Update notation when cube size changes
 document.getElementById('cubeSize').addEventListener('change', (e) => {
     const cubeSize = parseInt(e.target.value);
     updateNotation(cubeSize);
 });
 
-// Генерація початкового алгоритму при завантаженні сторінки
+// Generate initial scramble on page load
 window.addEventListener('load', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
     const moveCount = parseInt(document.getElementById('moveCount').value);
