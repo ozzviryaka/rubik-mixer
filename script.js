@@ -2,7 +2,7 @@
 const moveSets = {
     2: ['R', 'U', 'F'],
     3: ['R', 'L', 'U', 'D', 'F', 'B'],
-    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Uw', 'Fw'],
+    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'u', 'f', 'Rw', 'Uw', 'Fw'],
 };
 
 // Move descriptions for different cube sizes
@@ -32,11 +32,8 @@ const moveDescriptions = {
         { move: 'F', desc: 'Front outer face' },
         { move: 'B', desc: 'Back outer face' },
         { move: 'r', desc: 'Right inner layer' },
-        { move: 'l', desc: 'Left inner layer' },
         { move: 'u', desc: 'Up inner layer' },
-        { move: 'd', desc: 'Down inner layer' },
         { move: 'f', desc: 'Front inner layer' },
-        { move: 'b', desc: 'Back inner layer' },
         { move: 'Rw', desc: 'Right wide face' },
         { move: 'Uw', desc: 'Up wide face' },
         { move: 'Fw', desc: 'Front wide face' },
@@ -56,7 +53,6 @@ const oppositeFaces = {
     'r': 'l', 'l': 'r',
     'u': 'd', 'd': 'u',
     'f': 'b', 'b': 'f',
-    'M': 'M', 'E': 'E', 'S': 'S'
 };
 
 const defaultCubeSizeToMoveCount = {
