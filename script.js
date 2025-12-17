@@ -258,6 +258,14 @@ document.getElementById('cubeSize').addEventListener('change', (e) => {
     displayScramble(scramble);
 });
 
+document.getElementById('moveCount').addEventListener('change', (e) => {
+    const cubeSize = parseInt(document.getElementById('cubeSize').value);
+    const moveCount = parseInt(e.target.value);
+    
+    const scramble = generateScramble(cubeSize, moveCount);
+    displayScramble(scramble);
+});
+
 // Generate initial scramble on page load
 window.addEventListener('load', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
