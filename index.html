@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор змішування кубика Рубика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Генератор змішування кубика Рубика</h1>
+            <p class="subtitle">Створіть випадкову послідовність рухів для вашого кубика</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="cubeSize">
+                    <span class="label-icon">📦</span>
+                    Розмір кубика
+                </label>
+                <select id="cubeSize">
+                    <option value="2">2×2×2</option>
+                    <option value="3" selected>3×3×3</option>
+                    <option value="4">4×4×4</option>
+                    <option value="5">5×5×5</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="moveCount">
+                    <span class="label-icon">🔄</span>
+                    Кількість рухів
+                </label>
+                <select id="moveCount">
+                    <option value="10">10 рухів</option>
+                    <option value="20" selected>20 рухів</option>
+                    <option value="30">30 рухів</option>
+                    <option value="40">40 рухів</option>
+                </select>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">
+                <span class="btn-icon">✨</span>
+                Згенерувати алгоритм
+            </button>
+        </div>
+
+        <div class="result-container">
+            <div class="result-header">
+                <h2>Алгоритм змішування</h2>
+                <button id="copyBtn" class="copy-btn" title="Копіювати">
+                    <span class="copy-icon">📋</span>
+                </button>
+            </div>
+            <div id="algorithm" class="algorithm">
+                <div class="placeholder">
+                    Натисніть кнопку, щоб згенерувати алгоритм
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>📖 Позначення рухів</h3>
+            <div class="notation-grid">
+                <div class="notation-item">
+                    <strong>R</strong> - Права грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>L</strong> - Ліва грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>U</strong> - Верхня грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>D</strong> - Нижня грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>F</strong> - Передня грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>B</strong> - Задня грань за годинниковою стрілкою
+                </div>
+                <div class="notation-item">
+                    <strong>'</strong> - Проти годинникової стрілки (наприклад, R')
+                </div>
+                <div class="notation-item">
+                    <strong>2</strong> - Подвійний поворот (наприклад, R2)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
