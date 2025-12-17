@@ -271,12 +271,22 @@ select:focus {
 }
 
 .notation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
 }
 
 .notation-item {
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 250px;
+    max-width: calc(33.333% - 10px);
+}
+
+.notation-item {
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 250px;
+    max-width: calc(33.333% - 10px);
     padding: 15px;
     background: var(--background);
     border-radius: 10px;
