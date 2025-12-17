@@ -2,8 +2,7 @@
 const moveSets = {
     2: ['R', 'L', 'U', 'D', 'F', 'B'],
     3: ['R', 'L', 'U', 'D', 'F', 'B', 'M', 'E', 'S'],
-    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b'],
-    5: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Lw', 'Uw', 'Dw', 'Fw', 'Bw']
+    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Lw', 'Uw', 'Dw', 'Fw', 'Bw', 'Rr', 'Ll', 'Uu', 'Dd', 'Ff', 'Bb'],
 };
 
 // Move descriptions for different cube sizes
@@ -38,34 +37,18 @@ const moveDescriptions = {
         { move: 'D', desc: 'Down outer face' },
         { move: 'F', desc: 'Front outer face' },
         { move: 'B', desc: 'Back outer face' },
-        { move: 'r', desc: 'Right face + inner layer' },
-        { move: 'l', desc: 'Left face + inner layer' },
-        { move: 'u', desc: 'Up face + inner layer' },
-        { move: 'd', desc: 'Down face + inner layer' },
-        { move: 'f', desc: 'Front face + inner layer' },
-        { move: 'b', desc: 'Back face + inner layer' },
-        { move: '\'', desc: 'Counter-clockwise' },
-        { move: '2', desc: 'Double turn' }
-    ],
-    5: [
-        { move: 'R', desc: 'Right outer face' },
-        { move: 'L', desc: 'Left outer face' },
-        { move: 'U', desc: 'Up outer face' },
-        { move: 'D', desc: 'Down outer face' },
-        { move: 'F', desc: 'Front outer face' },
-        { move: 'B', desc: 'Back outer face' },
-        { move: 'r', desc: 'Right face + 1 inner layer' },
-        { move: 'l', desc: 'Left face + 1 inner layer' },
-        { move: 'u', desc: 'Up face + 1 inner layer' },
-        { move: 'd', desc: 'Down face + 1 inner layer' },
-        { move: 'f', desc: 'Front face + 1 inner layer' },
-        { move: 'b', desc: 'Back face + 1 inner layer' },
-        { move: 'Rw', desc: 'Right face + 2 inner layers' },
-        { move: 'Lw', desc: 'Left face + 2 inner layers' },
-        { move: 'Uw', desc: 'Up face + 2 inner layers' },
-        { move: 'Dw', desc: 'Down face + 2 inner layers' },
-        { move: 'Fw', desc: 'Front face + 2 inner layers' },
-        { move: 'Bw', desc: 'Back face + 2 inner layers' },
+        { move: 'r', desc: 'Right inner layer' },
+        { move: 'l', desc: 'Left inner layer' },
+        { move: 'u', desc: 'Up inner layer' },
+        { move: 'd', desc: 'Down inner layer' },
+        { move: 'f', desc: 'Front inner layer' },
+        { move: 'b', desc: 'Back inner layer' },
+        { move: 'Rr', desc: 'Right face + inner layers' },
+        { move: 'Ll', desc: 'Left face + inner layers' },
+        { move: 'Uu', desc: 'Up face + inner layers' },
+        { move: 'Dd', desc: 'Down face + inner layers' },
+        { move: 'Ff', desc: 'Front face + inner layers' },
+        { move: 'Bb', desc: 'Back face + inner layers' },
         { move: '\'', desc: 'Counter-clockwise' },
         { move: '2', desc: 'Double turn' }
     ]
