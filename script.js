@@ -6,6 +6,71 @@ const moveSets = {
     5: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Lw', 'Uw', 'Dw', 'Fw', 'Bw']
 };
 
+// Опис рухів для різних розмірів кубиків
+const moveDescriptions = {
+    2: [
+        { move: 'R', desc: 'Права грань за годинниковою стрілкою' },
+        { move: 'L', desc: 'Ліва грань за годинниковою стрілкою' },
+        { move: 'U', desc: 'Верхня грань за годинниковою стрілкою' },
+        { move: 'D', desc: 'Нижня грань за годинниковою стрілкою' },
+        { move: 'F', desc: 'Передня грань за годинниковою стрілкою' },
+        { move: 'B', desc: 'Задня грань за годинниковою стрілкою' },
+        { move: '\'', desc: 'Проти годинникової стрілки (наприклад, R\')' },
+        { move: '2', desc: 'Подвійний поворот (наприклад, R2)' }
+    ],
+    3: [
+        { move: 'R', desc: 'Права грань за годинниковою стрілкою' },
+        { move: 'L', desc: 'Ліва грань за годинниковою стрілкою' },
+        { move: 'U', desc: 'Верхня грань за годинниковою стрілкою' },
+        { move: 'D', desc: 'Нижня грань за годинниковою стрілкою' },
+        { move: 'F', desc: 'Передня грань за годинниковою стрілкою' },
+        { move: 'B', desc: 'Задня грань за годинниковою стрілкою' },
+        { move: 'M', desc: 'Середній шар (між R і L)' },
+        { move: 'E', desc: 'Екваторіальний шар (між U і D)' },
+        { move: 'S', desc: 'Стоячий шар (між F і B)' },
+        { move: '\'', desc: 'Проти годинникової стрілки (наприклад, R\')' },
+        { move: '2', desc: 'Подвійний поворот (наприклад, R2)' }
+    ],
+    4: [
+        { move: 'R', desc: 'Права зовнішня грань' },
+        { move: 'L', desc: 'Ліва зовнішня грань' },
+        { move: 'U', desc: 'Верхня зовнішня грань' },
+        { move: 'D', desc: 'Нижня зовнішня грань' },
+        { move: 'F', desc: 'Передня зовнішня грань' },
+        { move: 'B', desc: 'Задня зовнішня грань' },
+        { move: 'r', desc: 'Права грань + внутрішній шар' },
+        { move: 'l', desc: 'Ліва грань + внутрішній шар' },
+        { move: 'u', desc: 'Верхня грань + внутрішній шар' },
+        { move: 'd', desc: 'Нижня грань + внутрішній шар' },
+        { move: 'f', desc: 'Передня грань + внутрішній шар' },
+        { move: 'b', desc: 'Задня грань + внутрішній шар' },
+        { move: '\'', desc: 'Проти годинникової стрілки' },
+        { move: '2', desc: 'Подвійний поворот' }
+    ],
+    5: [
+        { move: 'R', desc: 'Права зовнішня грань' },
+        { move: 'L', desc: 'Ліва зовнішня грань' },
+        { move: 'U', desc: 'Верхня зовнішня грань' },
+        { move: 'D', desc: 'Нижня зовнішня грань' },
+        { move: 'F', desc: 'Передня зовнішня грань' },
+        { move: 'B', desc: 'Задня зовнішня грань' },
+        { move: 'r', desc: 'Права грань + 1 внутрішній шар' },
+        { move: 'l', desc: 'Ліва грань + 1 внутрішній шар' },
+        { move: 'u', desc: 'Верхня грань + 1 внутрішній шар' },
+        { move: 'd', desc: 'Нижня грань + 1 внутрішній шар' },
+        { move: 'f', desc: 'Передня грань + 1 внутрішній шар' },
+        { move: 'b', desc: 'Задня грань + 1 внутрішній шар' },
+        { move: 'Rw', desc: 'Права грань + 2 внутрішні шари' },
+        { move: 'Lw', desc: 'Ліва грань + 2 внутрішні шари' },
+        { move: 'Uw', desc: 'Верхня грань + 2 внутрішні шари' },
+        { move: 'Dw', desc: 'Нижня грань + 2 внутрішні шари' },
+        { move: 'Fw', desc: 'Передня грань + 2 внутрішні шари' },
+        { move: 'Bw', desc: 'Задня грань + 2 внутрішні шари' },
+        { move: '\'', desc: 'Проти годинникової стрілки' },
+        { move: '2', desc: 'Подвійний поворот' }
+    ]
+};
+
 // Модифікатори
 const modifiers = ['', '\'', '2'];
 
@@ -167,6 +232,21 @@ function copyToClipboard() {
     }
 }
 
+// Оновлення позначень рухів
+function updateNotation(cubeSize) {
+    const notationGrid = document.querySelector('.notation-grid');
+    const descriptions = moveDescriptions[cubeSize];
+    
+    notationGrid.innerHTML = '';
+    
+    descriptions.forEach(item => {
+        const notationItem = document.createElement('div');
+        notationItem.className = 'notation-item';
+        notationItem.innerHTML = `<strong>${item.move}</strong> - ${item.desc}`;
+        notationGrid.appendChild(notationItem);
+    });
+}
+
 // Обробники подій
 document.getElementById('generateBtn').addEventListener('click', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
@@ -178,10 +258,17 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 
 document.getElementById('copyBtn').addEventListener('click', copyToClipboard);
 
+// Оновлення позначень при зміні розміру кубика
+document.getElementById('cubeSize').addEventListener('change', (e) => {
+    const cubeSize = parseInt(e.target.value);
+    updateNotation(cubeSize);
+});
+
 // Генерація початкового алгоритму при завантаженні сторінки
 window.addEventListener('load', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
     const moveCount = parseInt(document.getElementById('moveCount').value);
+    updateNotation(cubeSize);
     const scramble = generateScramble(cubeSize, moveCount);
     displayScramble(scramble);
 });
