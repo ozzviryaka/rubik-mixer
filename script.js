@@ -2,7 +2,7 @@
 const moveSets = {
     2: ['R', 'L', 'U', 'D', 'F', 'B'],
     3: ['R', 'L', 'U', 'D', 'F', 'B', 'M', 'E', 'S'],
-    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Lw', 'Uw', 'Dw', 'Fw', 'Bw', 'Rr', 'Ll', 'Uu', 'Dd', 'Ff', 'Bb'],
+    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rr', 'Ll', 'Uu', 'Dd', 'Ff', 'Bb'],
 };
 
 // Move descriptions for different cube sizes
