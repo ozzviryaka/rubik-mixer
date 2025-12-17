@@ -213,6 +213,7 @@ select:focus {
     line-height: 2;
     word-wrap: break-word;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .algorithm.has-content {
