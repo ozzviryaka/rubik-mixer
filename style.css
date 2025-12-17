@@ -234,6 +234,7 @@ select:focus {
     padding: 6px 12px;
     margin: 4px;
     width: 8.95%;
+    text-align: center;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 8px;
     color: white;
