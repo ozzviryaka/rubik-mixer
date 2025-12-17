@@ -241,6 +241,23 @@ document.getElementById('cubeSize').addEventListener('change', (e) => {
     updateNotation(cubeSize);
 });
 
+document.getElementById('cubeSize').addEventListener('change', (e) => {
+    const cubeSize = parseInt(e.target.value);
+    const moveCountSelect = document.getElementById('moveCount');
+    const recommendedMoveCount = defaultCubeSizeToMoveCount[cubeSize];
+    
+    // Update move count selection to recommended value
+    moveCountSelect.value = recommendedMoveCount;
+});
+
+document.getElementById('cubeSize').addEventListener('change', (e) => {
+    const cubeSize = parseInt(document.getElementById('cubeSize').value);
+    const moveCount = parseInt(document.getElementById('moveCount').value);
+    
+    const scramble = generateScramble(cubeSize, moveCount);
+    displayScramble(scramble);
+});
+
 // Generate initial scramble on page load
 window.addEventListener('load', () => {
     const cubeSize = parseInt(document.getElementById('cubeSize').value);
