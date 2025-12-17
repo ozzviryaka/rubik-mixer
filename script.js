@@ -1,19 +1,16 @@
 // Base moves for different cube sizes
 const moveSets = {
-    2: ['R', 'L', 'U', 'D', 'F', 'B'],
-    3: ['R', 'L', 'U', 'D', 'F', 'B', 'M', 'E', 'S'],
-    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rr', 'Ll', 'Uu', 'Dd', 'Ff', 'Bb'],
+    2: ['R', 'U', 'F'],
+    3: ['R', 'L', 'U', 'D', 'F', 'B'],
+    4: ['R', 'L', 'U', 'D', 'F', 'B', 'r', 'l', 'u', 'd', 'f', 'b', 'Rw', 'Uw', 'Fw'],
 };
 
 // Move descriptions for different cube sizes
 const moveDescriptions = {
     2: [
         { move: 'R', desc: 'Right face clockwise' },
-        { move: 'L', desc: 'Left face clockwise' },
         { move: 'U', desc: 'Up face clockwise' },
-        { move: 'D', desc: 'Down face clockwise' },
         { move: 'F', desc: 'Front face clockwise' },
-        { move: 'B', desc: 'Back face clockwise' },
         { move: '\'', desc: 'Counter-clockwise (e.g., R\')' },
         { move: '2', desc: 'Double turn (e.g., R2)' }
     ],
@@ -24,9 +21,6 @@ const moveDescriptions = {
         { move: 'D', desc: 'Down face clockwise' },
         { move: 'F', desc: 'Front face clockwise' },
         { move: 'B', desc: 'Back face clockwise' },
-        { move: 'M', desc: 'Middle layer (between R and L)' },
-        { move: 'E', desc: 'Equatorial layer (between U and D)' },
-        { move: 'S', desc: 'Standing layer (between F and B)' },
         { move: '\'', desc: 'Counter-clockwise (e.g., R\')' },
         { move: '2', desc: 'Double turn (e.g., R2)' }
     ],
@@ -43,12 +37,9 @@ const moveDescriptions = {
         { move: 'd', desc: 'Down inner layer' },
         { move: 'f', desc: 'Front inner layer' },
         { move: 'b', desc: 'Back inner layer' },
-        { move: 'Rr', desc: 'Right face + inner layers' },
-        { move: 'Ll', desc: 'Left face + inner layers' },
-        { move: 'Uu', desc: 'Up face + inner layers' },
-        { move: 'Dd', desc: 'Down face + inner layers' },
-        { move: 'Ff', desc: 'Front face + inner layers' },
-        { move: 'Bb', desc: 'Back face + inner layers' },
+        { move: 'Rw', desc: 'Right wide face' },
+        { move: 'Uw', desc: 'Up wide face' },
+        { move: 'Fw', desc: 'Front wide face' },
         { move: '\'', desc: 'Counter-clockwise' },
         { move: '2', desc: 'Double turn' }
     ]
@@ -65,10 +56,13 @@ const oppositeFaces = {
     'r': 'l', 'l': 'r',
     'u': 'd', 'd': 'u',
     'f': 'b', 'b': 'f',
-    'Rr': 'Ll', 'Ll': 'Rr',
-    'Uu': 'Dd', 'Dd': 'Uu',
-    'Ff': 'Bb', 'Bb': 'Ff',
     'M': 'M', 'E': 'E', 'S': 'S'
+};
+
+const defaultCubeSizeToMoveCount = {
+    2: 11,
+    3: 27,
+    4: 45
 };
 
 // Get base face without modifier
@@ -103,7 +97,7 @@ function isValidMove(moves, newMove) {
     
     // Check last 3 moves (to avoid duplicates in group of 4)
     if (moves.length >= 3) {
-        const lastThree = moves.slice(-3);
+        const lastThree = moves.slice(-2);
         const lastThreeFaces = lastThree.map(m => getBaseFace(m));
         
         // If new face already appears in last 3 moves
