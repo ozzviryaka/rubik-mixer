@@ -42,23 +42,30 @@ function areSimilarMoves(move1, move2) {
     return false;
 }
 
-// Перевірка останніх 4 рухів на наявність повторів або схожих рухів
-function isValidSequence(moves) {
-    if (moves.length < 4) return true;
+// Перевірка валідності нового руху
+function isValidMove(moves, newMove) {
+    if (moves.length === 0) return true;
     
-    const lastFour = moves.slice(-4);
-    const faces = lastFour.map(move => getBaseFace(move));
+    const baseFace = getBaseFace(newMove);
+    const lastMove = moves[moves.length - 1];
+    const lastBaseFace = getBaseFace(lastMove);
     
-    // Перевірка на повтори
-    const uniqueFaces = new Set(faces);
-    if (uniqueFaces.size < faces.length) {
-        return false;
-    }
+    // Не можна повторювати ту саму грань підряд
+    if (baseFace === lastBaseFace) return false;
     
-    // Перевірка на схожі рухи (протилежні грані)
-    for (let i = 0; i < lastFour.length; i++) {
-        for (let j = i + 1; j < lastFour.length; j++) {
-            if (areSimilarMoves(lastFour[i], lastFour[j])) {
+    // Перевірка останніх 3 рухів (щоб в групі з 4 не було повторів)
+    if (moves.length >= 3) {
+        const lastThree = moves.slice(-3);
+        const lastThreeFaces = lastThree.map(m => getBaseFace(m));
+        
+        // Якщо нова грань вже зустрічається в останніх 3 рухах
+        if (lastThreeFaces.includes(baseFace)) {
+            return false;
+        }
+        
+        // Перевірка на протилежні грані в останніх 3 рухах
+        for (const face of lastThreeFaces) {
+            if (oppositeFaces[face] === baseFace) {
                 return false;
             }
         }
@@ -79,27 +86,44 @@ function generateScramble(cubeSize, moveCount) {
     const availableMoves = moveSets[cubeSize];
     const scramble = [];
     let attempts = 0;
-    const maxAttempts = moveCount * 100; // Запобігання нескінченному циклу
+    const maxAttemptsPerMove = 50; // Максимум спроб для одного руху
     
-    while (scramble.length < moveCount && attempts < maxAttempts) {
-        attempts++;
-        const newMove = generateRandomMove(availableMoves);
+    while (scramble.length < moveCount) {
+        let moveAdded = false;
+        attempts = 0;
         
-        // Не додаємо рух, якщо він ідентичний попередньому
-        if (scramble.length > 0 && newMove === scramble[scramble.length - 1]) {
-            continue;
+        while (!moveAdded && attempts < maxAttemptsPerMove) {
+            attempts++;
+            const newMove = generateRandomMove(availableMoves);
+            
+            if (isValidMove(scramble, newMove)) {
+                scramble.push(newMove);
+                moveAdded = true;
+            }
         }
         
-        // Не додаємо рух, якщо він з тієї ж грані, що й попередній
-        if (scramble.length > 0 && getBaseFace(newMove) === getBaseFace(scramble[scramble.length - 1])) {
-            continue;
-        }
-        
-        scramble.push(newMove);
-        
-        // Перевірка валідності послідовності
-        if (!isValidSequence(scramble)) {
-            scramble.pop(); // Видаляємо неправильний рух
+        // Якщо не змогли додати рух після багатьох спроб, додаємо будь-який валідний
+        if (!moveAdded) {
+            // Знаходимо всі доступні грані, які не конфліктують
+            const usedFaces = scramble.length >= 3 
+                ? scramble.slice(-3).map(m => getBaseFace(m))
+                : scramble.map(m => getBaseFace(m));
+            
+            const usedAndOpposite = new Set([
+                ...usedFaces,
+                ...usedFaces.map(f => oppositeFaces[f])
+            ]);
+            
+            const availableFaces = availableMoves.filter(face => !usedAndOpposite.has(face));
+            
+            if (availableFaces.length > 0) {
+                const face = availableFaces[Math.floor(Math.random() * availableFaces.length)];
+                const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
+                scramble.push(face + modifier);
+            } else {
+                // В крайньому випадку просто додаємо випадковий рух
+                scramble.push(generateRandomMove(availableMoves));
+            }
         }
     }
     
