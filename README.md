@@ -1,1 +1,1 @@
-# rubik-mixer
+# Rubik's Cube Scramble Generator
